@@ -1,0 +1,32 @@
+Create database liabrary
+
+create table librarian(Id serial not null primary key,
+librarian_name varchar(30) not null,
+librarian_password varchar(60) not null)
+
+create table liabrary_clients
+(Id serial not null primary key,
+Fio varchar(60) not null,
+Address varchar(60),
+Phone varchar(11))
+
+create table liabrary_books 
+(
+Id serial not null primary key,
+Author varchar(60) not null,
+Books_name varchar(60) not null,
+Count_books int not null)
+
+create table liabrary_clients_books 
+(
+Id serial not null primary key,
+Id_books int not null,
+Id_clients int not null,
+Books_back boolean not null,
+Count_books int not null,
+Date_give timestamp not null,
+Date_back timestamp not null,
+CONSTRAINT FK_liabrary_books FOREIGN KEY (Id_books)  REFERENCES liabrary_books  (Id),
+CONSTRAINT FK_liabrary_clients FOREIGN KEY (Id_clients)  REFERENCES liabrary_clients  (Id));
+
+insert into librarian (librarian_name,librarian_password) values ('1', 'Qwerty')
